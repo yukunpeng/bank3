@@ -1,0 +1,55 @@
+[
+    {
+        "title": "招银大学招生简介招银大学招生简介招银大学招生简介",
+        "subArr": [
+            {
+                "title": "凤姐访谈",
+                "url": "asset/01.flv",
+                "pic": "asset/01.jpg"
+            },
+            {
+                "title": "2个视频",
+                "url": "asset/02.flv|asset/03.flv",
+                "pic": "asset/02.jpg|asset/03.jpg"
+            },
+            {
+                "title": "健身教程",
+                "url": "asset/03.flv",
+                "pic": "asset/03.jpg"
+            }
+        ]
+    },
+    {
+        "title": "没有子菜单1个视频",
+        "url": "asset/03.flv",
+        "pic": "asset/03.jpg"
+    },
+    {
+        "title": "没有子菜单2个视频",
+        "url": "asset/02.flv|asset/03.flv",
+        "pic": "asset/02.jpg|asset/03.jpg"
+    },
+    {
+        "title": "有子菜单",
+        "subArr": [
+            {
+                "title": "凤姐访谈",
+                "url": "asset/01.flv",
+                "pic": "asset/01.jpg"
+            },
+            {
+                "title": "2个视频",
+                "url": "asset/02.flv|asset/03.flv",
+                "pic": "asset/02.jpg|asset/03.jpg|"
+            }
+        ]
+    },
+    {
+        "title": "随堂练习",
+        "over": "prictice"
+    },
+    {
+        "title": "课程结束，谢谢观看",
+        "over": "over"
+    }
+]
