@@ -13,6 +13,7 @@
 		
 		//设置状态
 		public function setState(value:int):void{
+			state=value;
 			this["stateMc"].gotoAndStop(value);
 		}
 		//读取状态

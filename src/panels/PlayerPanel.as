@@ -215,9 +215,10 @@
 		}
 
 		public function isAllLearnOver():Boolean{
-			//检测视频和题目是否全部回答完毕
-			for(var i:int=0;i<stateArr.length-1;i++){
-				if(stateArr[i]!=3){
+			//更新有子菜单的主菜单
+			for(var i:int=0;i<FoldMenu.getIns()["con"].numChildren-1;i++){
+				mainNav=FoldMenu.getIns()["con"].getChildAt(i) as MainNav;
+				if(mainNav.state!=3){
 					return false;
 				}
 			}
@@ -375,7 +376,7 @@
 						playPos++;
 						playVideo(playPos);
 					}else{
-						
+						beginAnswer();
 					}
 					break;
 				case this["replayBtn"]:
