@@ -7,21 +7,33 @@
 	{
 		//保存成绩
 		public static function saveScore(score:Number):void{
-			ExternalInterface.call("doLMSSetValue","cmi.core.score.raw", score+"");
+			if(ExternalInterface.available){
+				ExternalInterface.call("doLMSSetValue","cmi.core.score.raw", score+"");
+			}
+			
 		}
 		//关闭窗口
 		public static function closeWindow():void{
-			ExternalInterface.call("window_close");
+			if(ExternalInterface.available){
+				ExternalInterface.call("window_close");
+			}
 		}
 
 		
 		public static function getScore():Number{
-			var scoreStr:String=ExternalInterface.call("doLMSSetValue","cmi.core.score.raw");
-			return Number(scoreStr);
+			if(ExternalInterface.available){
+				var scoreStr:String=ExternalInterface.call("doLMSSetValue","cmi.core.score.raw");
+				return Number(scoreStr);
+			}
+			return 0;
 		}
 		//发送passed
 		public static function sendPassed():void{
+			if(!ExternalInterface.available){
+				return;
+			}
 			var str:String = ExternalInterface.call("doLMSGetValue","cmi.core.lesson_status");
+
        		if(str!="passed"  &&  str!="completed"){
 				trace("passed");
                 ExternalInterface.call("doLMSSetValue","cmi.core.lesson_status", "passed");
@@ -31,6 +43,9 @@
 		
 		//发送complete
 		public static function sendComplete():void{
+			if(!ExternalInterface.available){
+				return;
+			}
 			var str:String = ExternalInterface.call("doLMSGetValue","cmi.core.lesson_status");
 			if(str!="completed"){
 				trace("completed");
@@ -41,6 +56,9 @@
 		
 		//获取播放状态列表
 		public static function saveState(arr:Array):void{
+			if(!ExternalInterface.available){
+				return;
+			}
 			//保存目前播放状态
 			var str:String=arr.toString();
 			ExternalInterface.call("doLMSSetValue", "cmi.suspend_data", str);
@@ -51,8 +69,11 @@
 		public static function getStateArr(len:int):Array{
 			//len代表视频数目
 			var arr:Array;
-			var str:String = ExternalInterface.call("doLMSGetValue", "cmi.suspend_data");
-			if(!str){
+			var str:String="";
+			if(ExternalInterface.available){
+				str = ExternalInterface.call("doLMSGetValue", "cmi.suspend_data");
+			}
+			if(!str||str==""){
 				str="";
 				//没有操作过课程
 				for(var i:int=0;i<len;i++){
@@ -61,7 +82,9 @@
 				//题目未回答1，播放视频0
 				str+="1,0";
 				//保存课程操作结果
-				ExternalInterface.call("doLMSSetValue", "cmi.suspend_data", str);
+				if(ExternalInterface.available){
+					ExternalInterface.call("doLMSSetValue", "cmi.suspend_data", str);
+				}
 			}
 			arr=str.split(",");
 			return arr;

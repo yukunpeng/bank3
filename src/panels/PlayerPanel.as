@@ -8,7 +8,6 @@
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.external.ExternalInterface;
 	import flash.geom.Rectangle;
 	
 	import gs.TweenLite;
@@ -99,6 +98,7 @@
 		}
 		
 		public function PlayerPanel() {
+			this["player"].getVideoPlayer(this["player"].activeVideoPlayerIndex).smoothing = true;
 			LoadManager.getIns().loadJson("asset/videolist.json",videoListCom);
 		}
 		
