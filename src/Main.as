@@ -23,7 +23,7 @@
 			//answerPanel=new AnswerPanel();
 			//addChild(answerPanel);
 			addChild(PlayerPanel.getIns());
-			addChild(Shuiyin.getIns());
+			//addChild(Shuiyin.getIns());
 			
 		}
 		
